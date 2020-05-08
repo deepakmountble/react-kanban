@@ -54,7 +54,7 @@
     "styled-components": "5.0.1",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.11.0"
   },
   "scripts": {
     "prepublishOnly": "rm -rf dist/ && NODE_ENV=production webpack --config webpack.prod.js",
