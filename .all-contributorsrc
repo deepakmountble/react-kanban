@@ -60,7 +60,9 @@
       "contributions": [
         "code",
         "test",
-        "doc"
+        "doc",
+        "question",
+        "review"
       ]
     },
     {
