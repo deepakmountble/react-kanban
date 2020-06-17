@@ -89,13 +89,14 @@ function UncontrolledBoard({
 
   function handleCardAdd(column, card, options = {}) {
     const boardWithNewCard = addCard(board, column, card, options)
-    onCardNew &&
-      onCardNew(
-        boardWithNewCard,
-        boardWithNewCard.columns.find(({ id }) => id === column.id),
-        card
-      )
+    const newBoardColumn = boardColumn({ board: boardWithNewCard, columnId: column.id })
+
+    onCardNew && onCardNew(boardWithNewCard, newBoardColumn, card)
     setBoard(boardWithNewCard)
+  }
+
+  function boardColumn({ board, columnId }) {
+    return board.columns.find(({ id }) => id === columnId)
   }
 
   async function handleDraftCardAdd(column, card, options = {}) {
@@ -105,12 +106,9 @@ function UncontrolledBoard({
 
   function handleCardRemove(column, card) {
     const boardWithoutCard = removeCard(board, column, card)
-    onCardRemove &&
-      onCardRemove(
-        boardWithoutCard,
-        boardWithoutCard.columns.find(({ id }) => id === column.id),
-        card
-      )
+    const newBoardColumn = boardColumn({ board: boardWithoutCard, columnId: column.id })
+
+    onCardRemove && onCardRemove(boardWithoutCard, newBoardColumn, card)
     setBoard(boardWithoutCard)
   }
 
